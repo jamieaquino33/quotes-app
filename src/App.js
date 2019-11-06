@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import QuoteBox from './QuoteBox';
 import quotes from './quotes';
-
+import './Quotebox.css';
 class App extends Component {
   //Setting up the constructor function so we can set our default state
   constructor(props) {
@@ -31,12 +31,24 @@ handleClick = () => {
     author: randomQuote.author
   });
 }
+
+//Function to generate a random color from R: 0-154, G:0-154, B:0-154
+getRandomColor(upperBound) {
+  const color = `rgb(
+    ${Math.floor(Math.random() * upperBound)},
+    ${Math.floor(Math.random() * upperBound)},
+    ${Math.floor(Math.random() * upperBound)}
+  )`;
+  
+  return color;
+}
   
 
   render() {
   return (
     <div>
       <QuoteBox
+        color={this.getRandomColor(155)}
         quote={this.state.quote}
         author={this.state.author}
         handleClick={this.handleClick}
